@@ -52,6 +52,8 @@ CREATE TABLE Properties (
     Manager_Id INT NOT NULL,
     PRIMARY KEY (Property_Id),
     FOREIGN KEY (Manager_Id) REFERENCES Property_Managers(Manager_Id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 -- Reservations Table
@@ -70,8 +72,12 @@ CREATE TABLE Property_Reservations (
     Property_Id INT NOT NULL,
     Reservation_Id INT NOT NULL,
     PRIMARY KEY (Property_Reservation_Id),
-    FOREIGN KEY (Property_Id) REFERENCES Properties(Property_Id),
+    FOREIGN KEY (Property_Id) REFERENCES Properties(Property_Id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
     FOREIGN KEY (Reservation_Id) REFERENCES Reservations(Reservation_Id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 -- Invoices Table
@@ -83,8 +89,12 @@ CREATE TABLE Invoices (
     Guest_Id INT NOT NULL,
     Reservation_Id INT NOT NULL,
     PRIMARY KEY (Invoice_Id),
-    FOREIGN KEY (Guest_Id) REFERENCES Guests(Guest_Id),
+    FOREIGN KEY (Guest_Id) REFERENCES Guests(Guest_Id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
     FOREIGN KEY (Reservation_Id) REFERENCES Reservations(Reservation_Id)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 -- --------------------------
