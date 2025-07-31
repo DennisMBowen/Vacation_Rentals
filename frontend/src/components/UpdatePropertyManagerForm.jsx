@@ -22,6 +22,9 @@ const UpdatePropertyManagerForm = ({ managers, backendURL, refreshPropertyManage
                 <label htmlFor="update_manager_email">Email: </label>
                 <input type="text" name="update_manager_email" id="update_manager_email" />
 
+                <label htmlFor="update_manager_phone">Phone Number: </label>
+                <input type="text" name="update_manager_phone" id="update_manager_phone" />
+
                 <input type="submit" />
             </form>
         </>

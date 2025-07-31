@@ -12,6 +12,9 @@ const CreatePropertyManagerForm = ({ backendURL, refreshPropertyManager }) => {
             <label htmlFor="create_manager_email">Email: </label>
             <input type="text" name="create_manager_email" id="create_manager_email" />
 
+            <label htmlFor="create_manager_phone">Phone Number: </label>
+            <input type="text" name="create_manager_phone" id="create_manager_phone" />
+
             <input type="submit" />
         </form>
         </>

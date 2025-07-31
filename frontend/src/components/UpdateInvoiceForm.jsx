@@ -13,14 +13,20 @@ const UpdateInvoiceForm = ({ invoices, backendURL, refreshInvoice }) => {
                     ))}
                 </select>
 
+                <label htmlFor="update_invoice_date">Invoice Date: </label>
+                <input type="date" name="update_invoice_date" id="update_invoice_date" />
+
+                <label htmlFor="update_invoice_total_due">Total Due: </label>
+                <input type="number" step="0.01" name="update_invoice_total_due" id="update_invoice_total_due" />
+
+                <label htmlFor="update_invoice_date_paid">Date Paid: </label>
+                <input type="date" name="update_invoice_date_paid" id="update_invoice_date_paid" />
+
+                <label htmlFor="update_invoice_guest_id">Guest ID: </label>
+                <input type="number" name="update_invoice_guest_id" id="update_invoice_guest_id" />
+
                 <label htmlFor="update_invoice_reservation_id">Reservation ID: </label>
                 <input type="number" name="update_invoice_reservation_id" id="update_invoice_reservation_id" />
-
-                <label htmlFor="update_invoice_amount">Amount: </label>
-                <input type="number" name="update_invoice_amount" id="update_invoice_amount" />
-
-                <label htmlFor="update_invoice_status">Status: </label>
-                <input type="text" name="update_invoice_status" id="update_invoice_status" />
 
                 <input type="submit" />
             </form>
