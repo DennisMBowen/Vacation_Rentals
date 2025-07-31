@@ -1,4 +1,4 @@
-const DeletePersonForm = ({ rowObject, backendURL, refreshPeople }) => {
+const DeleteGuestForm = ({ rowObject, backendURL, refreshGuest }) => {
 
     return (
         <td>
@@ -12,4 +12,4 @@ const DeletePersonForm = ({ rowObject, backendURL, refreshPeople }) => {
     );
 };
 
-export default DeletePersonForm;
+export default DeleteGuestForm;

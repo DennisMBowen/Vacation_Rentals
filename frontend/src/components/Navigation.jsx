@@ -3,7 +3,7 @@ function Navigation() {
         <nav>
             Navigation:
             <a href="/">Home</a>
-            <a href="/bsg-people">BSG People</a>
+            <a href="/guests">Guests</a>
         </nav>
     )
 } export default Navigation;
