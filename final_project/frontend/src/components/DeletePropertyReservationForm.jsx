@@ -1,11 +1,31 @@
 const DeletePropertyReservationForm = ({ rowObject, backendURL, refreshPropertyReservation }) => {
 
     const handleDelete = async (e) => {
+        console.log(`Delete selected: ${rowObject.Property_Reservation_Id}`);
         e.preventDefault();
-        await fetch(`${backendURL}/property_reservations/${rowObject.Property_Reservation_Id}`, {
-            method: 'DELETE'
-        });
-        refreshPropertyReservation();
+
+        const formData = {
+            property_reservation_id: rowObject.Property_Reservation_Id
+        };
+        console.log(formData);
+        try {
+            const response = await fetch(backendURL + '/property_reservations/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            if (response.ok) {
+                console.log("Property reservation successfully deleted.")
+                refreshPropertyReservation();
+            }
+            else {
+                console.error("Error deleting property reservation.");
+            }
+            refreshPropertyReservation();
+        }
+        catch (error) {
+            console.log('Error during property reservation deletion: ', error);
+        }
     };
 
     return (

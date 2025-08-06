@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TableRow from '../components/TableRow';
+import PRTableRow from '../components/PropertyReservationsTableRow';
 import CreatePropertyReservationForm from '../components/CreatePropertyReservationForm';
 import UpdatePropertyReservationForm from '../components/UpdatePropertyReservationForm';
 
@@ -7,6 +7,7 @@ function PropertyReservations({ backendURL }) {
     const [propertyReservations, setPropertyReservations] = useState([]);
 
     const getData = async function () {
+        console.log("Property reservations found");
         try {
             const response = await fetch(backendURL + '/property_reservations');
             const data = await response.json();
@@ -34,7 +35,7 @@ function PropertyReservations({ backendURL }) {
                 </thead>
                 <tbody>
                     {propertyReservations.map((pr, index) => (
-                        <TableRow key={index} rowObject={pr} backendURL={backendURL} refreshPropertyReservation={getData} />
+                        <PRTableRow key={index} rowObject={pr} backendURL={backendURL} refreshPropertyReservation={getData} />
                     ))}
                 </tbody>
             </table>
