@@ -14,7 +14,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json()); // this is needed for post requests
 
 
-const PORT = 43900;
+const PORT = 50506;
 
 // ########################################
 // ########## ROUTE HANDLERS
@@ -91,6 +91,25 @@ app.get('/property_reservations', async (req, res) => {
         console.error("Error executing Property Reservations query:", error);
         res.status(500).send("An error occurred while fetching property reservations.");
     }
+});
+
+app.post('/property_reservations/delete', async function (req, res) {
+
+    let data = req.body;
+    console.log(data);
+
+    const query = 'DELETE FROM Property_Reservations WHERE Property_Reservation_Id = ?';
+    db.query(query, [data.property_reservation_id], (err, result) => {
+        if (err) {
+            console.error("Error deleting property reservations row", err);
+            res.status(500).send(`An error occurred while delete property reservation with id ${prop_res_id}`);
+        }
+        if (result.afffectRows === 0) {
+            res.status(404).send(`Property reservation with id ${prop_res_id} not found`);
+        }
+        res.status(200).send(`Property reservation with id ${prop_res_id} successfully delete`);
+    });
+
 });
 
 // ########################################
