@@ -112,6 +112,18 @@ app.post('/property_reservations/delete', async function (req, res) {
 
 });
 
+app.post('/refresh_database', async function (req, res) {
+
+    try {
+        await db.query("CALL sp_PopulateDatabase();");
+        res.status(200).send("Database reset");
+    }
+    catch (error) {
+        res.status(500).send("An error occurred while refreshing the database");
+    }
+
+});
+
 // ########################################
 // ########## LISTENER
 
