@@ -1,13 +1,11 @@
 const DeletePropertyReservationForm = ({ rowObject, backendURL, refreshPropertyReservation }) => {
 
     const handleDelete = async (e) => {
-        console.log(`Delete selected: ${rowObject.Property_Reservation_Id}`);
         e.preventDefault();
 
         const formData = {
             property_reservation_id: rowObject.Property_Reservation_Id
         };
-        console.log(formData);
         try {
             const response = await fetch(backendURL + '/property_reservations/delete', {
                 method: 'POST',

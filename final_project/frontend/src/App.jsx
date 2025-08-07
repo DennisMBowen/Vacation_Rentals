@@ -23,7 +23,7 @@ function App() {
         <>
             <Navigation />
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home backendURL={backendURL} />} />
                 <Route path="/guests" element={<Guests backendURL={backendURL} />} />
                 <Route path="/properties" element={<Properties backendURL={backendURL} />} />
                 <Route path="/reservations" element={<Reservations backendURL={backendURL} />} />
