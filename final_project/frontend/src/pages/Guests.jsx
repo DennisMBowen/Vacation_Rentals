@@ -13,6 +13,7 @@ function Guests({ backendURL }) {
     const getData = async function () {
         try {
             // Make a GET request to the backend
+            console.log(backendURL);
             const response = await fetch(backendURL + '/guests');
             // http://classwork.engr.oregonstate.edu:${backendPort}
             // const response = await fetch('http://classwork.engr.oregonstate.edu:43900/guests');

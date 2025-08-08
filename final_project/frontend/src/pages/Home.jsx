@@ -2,7 +2,7 @@ function Home({ backendURL }) {
 
     const handleRefresh = async () => {
         // e.preventDefault();
-        console.log("Refresh button clicked");
+        // console.log("Refresh button clicked");
 
         try {
             const response = await fetch(backendURL + '/refresh_database', {
