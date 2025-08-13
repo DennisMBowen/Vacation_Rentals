@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import PRTableRow from '../components/PropertyReservationsTableRow';
-import CreatePropertyReservationForm from '../components/CreatePropertyReservationForm';
-import UpdatePropertyReservationForm from '../components/UpdatePropertyReservationForm';
 
 function PropertyReservations({ backendURL }) {
     const [propertyReservations, setPropertyReservations] = useState([]);
@@ -39,8 +37,6 @@ function PropertyReservations({ backendURL }) {
                     ))}
                 </tbody>
             </table>
-            <CreatePropertyReservationForm backendURL={backendURL} refreshPropertyReservation={getData} />
-            <UpdatePropertyReservationForm propertyReservations={propertyReservations} backendURL={backendURL} refreshPropertyReservation={getData} />
         </>
     );
 }

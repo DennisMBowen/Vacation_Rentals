@@ -1,7 +1,9 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 import { useState, useEffect } from 'react';
 import TableRow from '../components/TableRow';
-import CreatePropertyForm from '../components/CreatePropertyForm';
-import UpdatePropertyForm from '../components/UpdatePropertyForm';
 
 function Properties({ backendURL }) {
     const [properties, setProperties] = useState([]);
@@ -29,7 +31,6 @@ function Properties({ backendURL }) {
                         {properties.length > 0 && Object.keys(properties[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +39,6 @@ function Properties({ backendURL }) {
                     ))}
                 </tbody>
             </table>
-            <CreatePropertyForm backendURL={backendURL} refreshProperty={getData} />
-            <UpdatePropertyForm properties={properties} backendURL={backendURL} refreshProperty={getData} />
         </>
     );
 }

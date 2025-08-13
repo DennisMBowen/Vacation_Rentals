@@ -1,3 +1,7 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -14,7 +18,7 @@ import PropertyReservations from './pages/PropertyReservations';
 import Navigation from './components/Navigation';
 
 // Define the backend port and URL for API requests
-const backendPort = 43900;  // Use the port you assigned to the backend server, this would normally go in a .env file
+const backendPort = 43800;  // Use the port you assigned to the backend server, this would normally go in a .env file
 const backendURL = `http://classwork.engr.oregonstate.edu:${backendPort}`;
 
 function App() {

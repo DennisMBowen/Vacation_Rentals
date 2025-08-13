@@ -1,3 +1,7 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 // ########################################
 // ########## SETUP
 
@@ -14,7 +18,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json()); // this is needed for post requests
 
 
-const PORT = 43900;
+const PORT = 43800;
 
 // ########################################
 // ########## ROUTE HANDLERS
@@ -93,10 +97,12 @@ app.get('/property_reservations', async (req, res) => {
     }
 });
 
+// Date: 08/05/225
+// Adapted from Oregon State Canvas CS 340: Module 8 Exploration: Implementing CUD operations in your app
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25664628
 app.post('/property_reservations/delete', async function (req, res) {
 
     let data = req.body;
-    console.log(data);
 
     const query = 'DELETE FROM Property_Reservations WHERE Property_Reservation_Id = ?';
     db.query(query, [data.property_reservation_id], (err, result) => {

@@ -1,7 +1,20 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
+// Microsoft Copilot AI was used in return section to remove extra header column in the table.
+// Date: 08/12/2025
+// Source URL: https://copilot.microsoft.com/
+// Prompt used: "Based on the following code block:
+// <thead> <tr> {guests.length > 0 && Object.keys(guests[0]).map((header, index) => ( <th key={index}>{header}</th> ))} <th></th> </tr> </thead>
+// How do I remove one column in the header?"
+
+
+
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
-import CreateGuestForm from '../components/CreateGuestForm';
-import UpdateGuestForm from '../components/UpdateGuestForm';
+
+// 
 
 
 function Guests({ backendURL }) {
@@ -15,12 +28,10 @@ function Guests({ backendURL }) {
             // Make a GET request to the backend
             console.log(backendURL);
             const response = await fetch(backendURL + '/guests');
-            // http://classwork.engr.oregonstate.edu:${backendPort}
-            // const response = await fetch('http://classwork.engr.oregonstate.edu:43900/guests');
 
             // Convert the response into JSON format
             const data = await response.json();
-
+            console.log(data);
             // Update the people state with the response data
             setGuests(data); // Set the guests array directly
 
@@ -46,7 +57,6 @@ function Guests({ backendURL }) {
                         {guests.length > 0 && Object.keys(guests[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
                     </tr>
                 </thead>
 
@@ -57,9 +67,6 @@ function Guests({ backendURL }) {
 
                 </tbody>
             </table>
-
-            <CreateGuestForm backendURL={backendURL} refreshGuest={getData} />
-            <UpdateGuestForm guests={guests} backendURL={backendURL} refreshGuest={getData} />
         </>
     );
 
