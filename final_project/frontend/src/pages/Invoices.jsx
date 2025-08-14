@@ -5,6 +5,8 @@ import UpdateInvoiceForm from '../components/UpdateInvoiceForm';
 
 function Invoices({ backendURL }) {
     const [invoices, setInvoices] = useState([]);
+    const [guests, setGuests] = useState([]);
+    const [reservations, setReservations] = useState([]);
 
     const getData = async function () {
         try {
@@ -16,8 +18,30 @@ function Invoices({ backendURL }) {
         }
     };
 
+    const getGuestsData = async function () {
+        try {
+            const response = await fetch(backendURL + '/guests');
+            const data = await response.json();
+            setGuests(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getReservationsData = async function () {
+        try {
+            const response = await fetch(backendURL + '/reservations');
+            const data = await response.json();
+            setReservations(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     useEffect(() => {
         getData();
+        getGuestsData();
+        getReservationsData();
     }, []);
 
     return (
@@ -38,8 +62,19 @@ function Invoices({ backendURL }) {
                     ))}
                 </tbody>
             </table>
-            <CreateInvoiceForm backendURL={backendURL} refreshInvoice={getData} />
-            <UpdateInvoiceForm invoices={invoices} backendURL={backendURL} refreshInvoice={getData} />
+            <CreateInvoiceForm 
+                guests={guests} 
+                reservations={reservations} 
+                backendURL={backendURL} 
+                refreshInvoices={getData} 
+            />
+            <UpdateInvoiceForm 
+                invoices={invoices} 
+                guests={guests} 
+                reservations={reservations} 
+                backendURL={backendURL} 
+                refreshInvoices={getData} 
+            />
         </>
     );
 }
