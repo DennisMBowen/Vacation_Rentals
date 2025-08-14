@@ -19,7 +19,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json()); // this is needed for post requests
 
 
-const PORT = 5647;
+const PORT = 43700;
 
 // ########################################
 // ########## ROUTE HANDLERS
@@ -111,10 +111,12 @@ app.get('/property_reservations', async (req, res) => {
     }
 });
 
+// Date: 08/05/225
+// Adapted from Oregon State Canvas CS 340: Module 8 Exploration: Implementing CUD operations in your app
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25664628
 app.post('/property_reservations/delete', async function (req, res) {
 
     let data = req.body;
-    console.log(data);
 
     const query = 'DELETE FROM Property_Reservations WHERE Property_Reservation_Id = ?';
     db.query(query, [data.property_reservation_id], (err, result) => {
@@ -150,9 +152,9 @@ app.post('/invoices/create', async function (req, res) {
 
         // Cleanse data - If date_paid is empty, make it NULL.
         let datePaid = data.create_invoice_date_paid || null;
-        
+
         // Validate required fields
-        if (!data.create_invoice_date || !data.create_invoice_total_due || 
+        if (!data.create_invoice_date || !data.create_invoice_total_due ||
             !data.create_invoice_guest_id || !data.create_invoice_reservation_id) {
             return res.status(400).send('Missing required fields');
         }
@@ -195,9 +197,9 @@ app.post('/invoices/update', async function (req, res) {
 
         // Cleanse data - If date_paid is empty, make it NULL.
         let datePaid = data.update_invoice_date_paid || null;
-        
+
         // Validate required fields
-        if (!data.update_invoice_id || !data.update_invoice_date || !data.update_invoice_total_due || 
+        if (!data.update_invoice_id || !data.update_invoice_date || !data.update_invoice_total_due ||
             !data.update_invoice_guest_id || !data.update_invoice_reservation_id) {
             return res.status(400).send('Missing required fields');
         }
@@ -206,7 +208,7 @@ app.post('/invoices/update', async function (req, res) {
         // Using parameterized queries (Prevents SQL injection attacks)
         const query1 = 'CALL sp_UpdateInvoice(?, ?, ?, ?, ?, ?);';
         const query2 = 'SELECT Invoice_Id, Total_Due FROM Invoices WHERE Invoice_Id = ?;';
-        
+
         await db.query(query1, [
             data.update_invoice_id,
             data.update_invoice_date,
@@ -215,7 +217,7 @@ app.post('/invoices/update', async function (req, res) {
             data.update_invoice_guest_id,
             data.update_invoice_reservation_id,
         ]);
-        
+
         const [[rows]] = await db.query(query2, [data.update_invoice_id]);
 
         console.log(`UPDATE invoice. ID: ${data.update_invoice_id} ` +

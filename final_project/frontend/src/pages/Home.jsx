@@ -1,3 +1,7 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology, except for Refresh Database button
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 function Home({ backendURL }) {
 
     const handleRefresh = async () => {
@@ -27,7 +31,9 @@ function Home({ backendURL }) {
         <>
             <h1>Vacation Rental Management System</h1>
             <div className="homepageDescription">
-                <p>Developer information and Project overview here.</p>
+                <p>Developers: Kai Johnson and Dennis Bowen</p>
+                <p>The Vacation Rental Management System provides property managers an easy to keep track of
+                    their property data. It will store information about guests, properties, reservations, and invoices.</p>
                 <button onClick={handleRefresh}>Refresh Database</button>
             </div>
         </>

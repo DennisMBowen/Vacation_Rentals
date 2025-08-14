@@ -1,3 +1,7 @@
+// Date: 07/29/2025
+// Adaoted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 // reactServer.cjs
 // Uses common JavaScript to serve the React build folder (/dist)
 
@@ -6,7 +10,11 @@ const path = require('path');
 const app = express();
 
 // Hardcode react PORT here, but this is normally done inside .env file
+<<<<<<< HEAD
+const PORT = 40099;
+=======
 const PORT = 2478;
+>>>>>>> b1b82ce88172c79e6966d40e7db1a7ac183bba4f
 
 // Serve the stat files from the React app located in the build footer '/dist'
 // React router will take over front end routing

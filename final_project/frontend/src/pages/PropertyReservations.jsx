@@ -1,13 +1,14 @@
+// Date: 07/29/2025
+// Adapted from Oregon State Canvas CS 340: Module 6 Exploration: Web Application Technology
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-web-application-technology-2?module_item_id=25664612
+
 import { useState, useEffect } from 'react';
 import PRTableRow from '../components/PropertyReservationsTableRow';
-import CreatePropertyReservationForm from '../components/CreatePropertyReservationForm';
-import UpdatePropertyReservationForm from '../components/UpdatePropertyReservationForm';
 
 function PropertyReservations({ backendURL }) {
     const [propertyReservations, setPropertyReservations] = useState([]);
 
     const getData = async function () {
-        console.log("Property reservations found");
         try {
             const response = await fetch(backendURL + '/property_reservations');
             const data = await response.json();
@@ -39,8 +40,6 @@ function PropertyReservations({ backendURL }) {
                     ))}
                 </tbody>
             </table>
-            <CreatePropertyReservationForm backendURL={backendURL} refreshPropertyReservation={getData} />
-            <UpdatePropertyReservationForm propertyReservations={propertyReservations} backendURL={backendURL} refreshPropertyReservation={getData} />
         </>
     );
 }
