@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TableRow from '../components/TableRow';
+import InvoiceRow from '../components/InvoiceRow';
 import CreateInvoiceForm from '../components/CreateInvoiceForm';
 import UpdateInvoiceForm from '../components/UpdateInvoiceForm';
 
@@ -34,7 +34,7 @@ function Invoices({ backendURL }) {
                 </thead>
                 <tbody>
                     {invoices.map((invoice, index) => (
-                        <TableRow key={index} rowObject={invoice} backendURL={backendURL} refreshInvoice={getData} />
+                        <InvoiceRow key={index} rowObject={invoice} backendURL={backendURL} refreshInvoice={getData} />
                     ))}
                 </tbody>
             </table>
