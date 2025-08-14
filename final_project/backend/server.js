@@ -111,27 +111,52 @@ app.get('/property_reservations', async (req, res) => {
     }
 });
 
-// Date: 08/05/225
+
+// Delete Routes
+// Date: 08/13/2025
 // Adapted from Oregon State Canvas CS 340: Module 8 Exploration: Implementing CUD operations in your app
 // Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25664628
 app.post('/property_reservations/delete', async function (req, res) {
 
     let data = req.body;
 
-    const query = 'DELETE FROM Property_Reservations WHERE Property_Reservation_Id = ?';
+    const query = 'CALL sp_DeletePropertyReservation(?)';
     db.query(query, [data.property_reservation_id], (err, result) => {
         if (err) {
             console.error("Error deleting property reservations row", err);
-            res.status(500).send(`An error occurred while delete property reservation with id ${prop_res_id}`);
+            res.status(500).send(`An error occurred while delete property reservation`);
         }
         if (result.afffectRows === 0) {
-            res.status(404).send(`Property reservation with id ${prop_res_id} not found`);
+            res.status(404).send(`Property reservation not found`);
         }
-        res.status(200).send(`Property reservation with id ${prop_res_id} successfully delete`);
+        res.status(200).send(`Property reservation successfully deleted`);
     });
 
 });
 
+// Date: 08/13/0225
+// Adapted from Oregon State Canvas CS 340: Module 8 Exploration: Implementing CUD operations in your app
+// Source URL: https://canvas.oregonstate.edu/courses/2007765/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25664628
+app.post('/invoice/delete', async function (req, res) {
+
+    let data = req.body;
+    // let id = data.Invoice_Id;
+
+    const query = 'CALL sp_DeleteInvoice(?)';
+    db.query(query, [data.invoice_id], (err, result) => {
+        if (err) {
+            console.error("Error deleting invoice row", err);
+            res.status(500).send(`An error occurred while delete invoice row.`);
+        }
+        if (result.afffectRows === 0) {
+            res.status(404).send(`Invoice not found`);
+        }
+        res.status(200).send(`Invoice successfully deleted`);
+    });
+
+});
+
+// Refresh database route
 app.post('/refresh_database', async function (req, res) {
 
     try {

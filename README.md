@@ -1,1 +1,0 @@
-# Vacation Rental Management System

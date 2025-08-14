@@ -32,7 +32,7 @@ function Home({ backendURL }) {
             <h1>Vacation Rental Management System</h1>
             <div className="homepageDescription">
                 <p>Developers: Kai Johnson and Dennis Bowen</p>
-                <p>The Vacation Rental Management System provides property managers an easy to keep track of
+                <p>The Vacation Rental Management System provides property managers an easy way to keep track of
                     their property data. It will store information about guests, properties, reservations, and invoices.</p>
                 <button onClick={handleRefresh}>Refresh Database</button>
             </div>
