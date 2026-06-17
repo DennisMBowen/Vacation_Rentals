@@ -1,5 +1,5 @@
 # Vacation Rental Management System
-* This project was last updated August 2025.
+* This project was last updated August 2025. It is not actively maintained.
 
 This is a React application that provides a front end to the Vacation Rental Management System database. The Vacation Rental Management System provides property managers an easy way to keep track of their property data. It will store information about guests, properties, reservations, and invoices. The project was built using React, Node.js, Express.js, and SQL.
 
